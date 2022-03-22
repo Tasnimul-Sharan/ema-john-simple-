@@ -52,8 +52,9 @@ const Shop = () => {
          }
         </div>
         <div className='cart-container'>
-          <h2>Order Summary</h2>
-          <p>Selected Items : {cart.length}</p>
+          <Cart cart={cart}></Cart>
+          {/* <h2>Order Summary</h2>
+          <p>Selected Items : {cart.length}</p> */}
           {/* <p>Total Price:</p>
           <p>Total Shipping Charge:</p>
           <p>Tax:</p>
@@ -81,6 +82,15 @@ const Product = (props) => {
         <p className='btn-text'>Add to Cart</p>  <FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon>
         </button>
        
+    </div>
+  )
+}
+
+const Cart = ({cart}) => {
+  return(
+    <div>
+      <h2>Order Summary</h2>
+      <p>Selected Items : {cart.length}</p>
     </div>
   )
 }
