@@ -1,5 +1,7 @@
 import logo from './images/Logo.svg';
 import './App.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react';
 
 function App() {
@@ -27,28 +29,45 @@ return(
 
 const Shop = () => {
   const [products, setProducts] = useState([])
+  const [cart, setCart] = useState([])
 
   useEffect(() => {
     fetch('products.json')
     .then(res => res.json())
     .then(data => setProducts(data))
   }, [])
+
+  const handleAddToCart = (product) => {
+    console.log(product)
+    // const newCart = [...cart, product]
+    setCart([...cart, product])
+
+  }
+
   return (
     <div className='shop-container'>
        <div className='products-container'>
          {
-           products.map(product => <Product key={product.id} product={product}></Product>)
+           products.map(product => <Product key={product.id} product={product} handleAddToCart={handleAddToCart} ></Product>)
          }
         </div>
         <div className='cart-container'>
-      <h3>this is cart</h3>
+          <h2>Order Summary</h2>
+          <p>Selected Items : {cart.length}</p>
+          {/* <p>Total Price:</p>
+          <p>Total Shipping Charge:</p>
+          <p>Tax:</p>
+          <h2>Grand Total:</h2>
+          <button>Clear Cart</button> <br />
+          <button>Review Order</button> */}
         </div>
     </div>
   )
 }
 
 const Product = (props) => {
-  const {name, img, seller, price, ratings} = props.product ;
+  const {product, handleAddToCart} = props;
+  const {name, img, seller, price, ratings} = product;
   return(
     <div className='product'>
       <img src={img} alt="" />
@@ -58,9 +77,10 @@ const Product = (props) => {
       <p><small>Manufacturer : {seller}</small></p>
       <p><small>Ratings : {ratings} stars</small></p>
       </div>
-      <button className='btn-cart'>
-        <p>Add to Cart</p>
+      <button onClick={() =>handleAddToCart(product)} className='btn-cart'>
+        <p className='btn-text'>Add to Cart</p>  <FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon>
         </button>
+       
     </div>
   )
 }
