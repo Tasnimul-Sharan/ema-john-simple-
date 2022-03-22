@@ -61,3 +61,14 @@
   display: grid;
   grid-template-columns: 4fr 1fr;
 }
+
+.product img {
+  width: 286px;
+  height: 286px;
+}
+
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 45px;
+}
