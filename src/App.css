@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  text-align: start;
 }
 
 .App-logo {
@@ -35,4 +35,29 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.header {
+  background-color: #1c2b35;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 140px;
+  padding-right: 140px;
+}
+
+.header a {
+  color: #ffffff;
+  margin: 10px;
+  text-decoration: none;
+}
+
+.header a:hover {
+  color: brown;
+}
+
+.shop-container {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
 }
