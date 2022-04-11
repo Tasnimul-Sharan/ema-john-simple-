@@ -19,8 +19,6 @@ const Cart = ({ cart }) => {
       <p>Total Shipping :$ {shipping}</p>
       <p>Tax : $ {tax}</p>
       <h5>Grand Total: $ {grandTotal}</h5>
-      <button>Clear Cart</button> <br />
-      <button>Review Order</button>
     </div>
   );
 };
